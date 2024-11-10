@@ -1,7 +1,8 @@
+// /scene/scene.tsx
 'use client';
 
 import { Canvas } from "@react-three/fiber";
-import { HeartModel } from "@/components/heart-model";
+import { HeartModel } from "@/components/heart/heart-model";
 import { Center, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 export default function Scene() {
@@ -9,7 +10,7 @@ export default function Scene() {
 
   return (
     <Canvas 
-      className="w-full h-full"
+      className="w-full h-full bg-white rounded-md"
       shadows
       camera={{ position: [0, 0, 5], fov: 65 }}
     >

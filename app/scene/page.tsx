@@ -3,6 +3,8 @@ import Scene from "./scene";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "next-view-transitions";
+import { ModuleSelector } from "@/components/learning/module-selector";
+import { LearningWrapper } from "@/components/learning/learning-wrapper";
 
 export default function Page() {
   return (
@@ -16,19 +18,6 @@ export default function Page() {
       {/* Main content - takes remaining height */}
       <div className="flex-1 p-6 pt-0 min-h-0">
         <div className="grid h-full grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* 3D Visualization Section */}
-          <div className="lg:col-span-2 h-full">
-            <Card className="h-full flex flex-col">
-              <CardHeader className="flex-none">
-                <CardTitle>Heart Visualization</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1 min-h-0">
-                <div className="w-full h-full">
-                  <Scene />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
 
           {/* Interactive Controls Section */}
           <div className="lg:col-span-1 h-full">
@@ -42,14 +31,11 @@ export default function Page() {
 
                 <div className="flex-1 min-h-0">
                   <TabsContent value="learn" className="h-full mt-0">
-                      <CardHeader className="flex-none">
-                        <CardTitle>Learning Mode</CardTitle>
+                      <CardHeader className="flex-none px-4">
+                        <CardTitle>Learning Modules</CardTitle>
                       </CardHeader>
-                      <CardContent className="flex-1 min-h-0 overflow-auto">
-                        <div className="space-y-4">
-                          <p>Select a topic to begin learning:</p>
-                          {/* Add learning mode controls */}
-                        </div>
+                      <CardContent className="flex-1 px-4 min-h-0 overflow-auto">
+                        <LearningWrapper />
                       </CardContent>
                   </TabsContent>
 
@@ -72,6 +58,20 @@ export default function Page() {
                   </TabsContent>
                 </div>
               </Tabs>
+            </Card>
+          </div>
+
+          {/* 3D Visualization Section */}
+          <div className="lg:col-span-2 h-full">
+            <Card className="h-full flex bg-white flex-col">
+              <CardHeader className="flex-none">
+                <CardTitle className="text-white">Heart Visualization</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-1 min-h-0">
+                <div className="w-full h-full">
+                  <Scene />
+                </div>
+              </CardContent>
             </Card>
           </div>
         </div>
