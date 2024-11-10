@@ -1,7 +1,7 @@
 // components/learning/lesson-controls.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useLearningStore } from '@/store/learning-store';
@@ -21,6 +21,7 @@ export function LessonControls() {
 
   const currentModule = modules.find(m => m.id === currentModuleId);
   const currentStep = currentModule?.steps[currentStepIndex];
+
 
   if (!currentModule || !currentStep) return null;
 
