@@ -5,73 +5,74 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-background p-6">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold">Optical EKG</h1>
-        <p className="text-muted-foreground">Interactive Cardiac Electrophysiology</p>
+    <div className="h-screen w-full flex flex-col overflow-hidden bg-background">
+      {/* Header - fixed height */}
+      <header className="flex-none p-6 pb-2">
+        <h1 className="text-2xl font-bold">Optical EKG</h1>
+        <p className="text-sm text-muted-foreground">Interactive Cardiac Electrophysiology</p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* 3D Visualization Section */}
-        <div className="lg:col-span-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Heart Visualization</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-square">
-                <Scene />
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+      {/* Main content - takes remaining height */}
+      <div className="flex-1 p-6 pt-0 min-h-0">
+        <div className="grid h-full grid-cols-1 lg:grid-cols-3 gap-4">
+          {/* 3D Visualization Section */}
+          <div className="lg:col-span-2 h-full">
+            <Card className="h-full flex flex-col">
+              <CardHeader className="flex-none">
+                <CardTitle>Heart Visualization</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-1 min-h-0">
+                <div className="w-full h-full">
+                  <Scene />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        {/* Interactive Controls Section */}
-        <div className="lg:col-span-1">
-          <Tabs defaultValue="learn">
-            <TabsList className="w-full">
-              <TabsTrigger value="learn">Learn</TabsTrigger>
-              <TabsTrigger value="explore">Explore</TabsTrigger>
-              <TabsTrigger value="practice">Practice</TabsTrigger>
-            </TabsList>
+          {/* Interactive Controls Section */}
+          <div className="lg:col-span-1 h-full">
+            <Card className="h-full p-2 flex flex-col">
+              <Tabs defaultValue="learn" className="h-full flex flex-col">
+                <TabsList className="flex-none w-full">
+                  <TabsTrigger value="learn">Learn</TabsTrigger>
+                  <TabsTrigger value="explore">Explore</TabsTrigger>
+                  <TabsTrigger value="practice">Practice</TabsTrigger>
+                </TabsList>
 
-            <TabsContent value="learn">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Learning Mode</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {/* Learning content will go here */}
-                    <p>Select a topic to begin learning:</p>
-                    {/* Add learning mode controls */}
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
+                <div className="flex-1 min-h-0">
+                  <TabsContent value="learn" className="h-full mt-0">
+                      <CardHeader className="flex-none">
+                        <CardTitle>Learning Mode</CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-1 min-h-0 overflow-auto">
+                        <div className="space-y-4">
+                          <p>Select a topic to begin learning:</p>
+                          {/* Add learning mode controls */}
+                        </div>
+                      </CardContent>
+                  </TabsContent>
 
-            <TabsContent value="explore">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Exploration Mode</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Add exploration controls */}
-                </CardContent>
-              </Card>
-            </TabsContent>
+                  <TabsContent value="explore" className="h-full mt-0">
+                      <CardHeader className="flex-none">
+                        <CardTitle>Exploration Mode</CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-1 min-h-0 overflow-auto">
+                        {/* Add exploration controls */}
+                      </CardContent>
+                  </TabsContent>
 
-            <TabsContent value="practice">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Practice Mode</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Add practice mode content */}
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+                  <TabsContent value="practice" className="h-full mt-0">
+                      <CardHeader className="flex-none">
+                        <CardTitle>Practice Mode</CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-1 min-h-0 overflow-auto">
+                        {/* Add practice mode content */}
+                      </CardContent>
+                  </TabsContent>
+                </div>
+              </Tabs>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
