@@ -4,6 +4,8 @@
 import { Canvas } from "@react-three/fiber";
 import { HeartModel } from "@/components/heart/heart-model";
 import { Center, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { useLearningStore } from "@/store/learning-store";
+import { useEffect, useRef, useState } from "react";
 
 export default function Scene() {
 
