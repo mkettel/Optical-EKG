@@ -2,13 +2,14 @@
 import Scene from "./scene";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "next-view-transitions";
 
 export default function Page() {
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-background dark:bg-black">
       {/* Header - fixed height */}
-      <header className="flex-none p-6 pb-2">
-        <h1 className="text-2xl font-bold">Optical EKG</h1>
+      <header className="flex-none p-6 pt-4 pb-6">
+        <Link href='/' className="text-xl font-bold">Optical EKG</Link>
         <p className="text-sm text-muted-foreground">Interactive Cardiac Electrophysiology</p>
       </header>
 
