@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Page() {
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden bg-background">
+    <div className="h-screen w-full flex flex-col overflow-hidden bg-background dark:bg-black">
       {/* Header - fixed height */}
       <header className="flex-none p-6 pb-2">
         <h1 className="text-2xl font-bold">Optical EKG</h1>
