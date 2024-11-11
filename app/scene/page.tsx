@@ -16,7 +16,7 @@ export default function Page() {
       </header>
 
       {/* Main content - takes remaining height */}
-      <div className="flex-1 p-6 pt-0 min-h-0">
+      <div className="flex-1 overflow-y-scroll p-6 pt-0 min-h-0">
         <div className="grid h-full grid-cols-1 lg:grid-cols-3 gap-4">
 
           {/* Interactive Controls Section */}

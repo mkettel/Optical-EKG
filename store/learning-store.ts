@@ -15,7 +15,26 @@ interface LearningState {
   previousStep: () => void;
   setPlaying: (playing: boolean) => void;
   reset: () => void;
+  cameraReset?: boolean;
 }
+
+// store/learning-store.ts
+export const CAMERA_CONFIG = {
+  default: {
+    position: [0, 0, 5] as [number, number, number],
+    target: [0, 1.5, 0] as [number, number, number],
+  },
+  limits: {
+    minDistance: 3,
+    maxDistance: 4.5,
+    fov: 65,
+    near: 0.1,
+    far: 1000
+  }
+} as const;
+
+export const DEFAULT_CAMERA_POSITION = CAMERA_CONFIG.default.position;
+export const DEFAULT_CAMERA_TARGET = CAMERA_CONFIG.default.target;
 
 const useLearningStore = create<LearningState>()((set, get) => ({
   currentModuleId: null,
@@ -33,24 +52,24 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Sinoatrial Node',
           description: "The heartbeat begins in the SA node, the heart's natural pacemaker.",
           highlightedStructures: ['sa-node'],
-          cameraPosition: [0, 2, 4],
-          cameraTarget: [0, 0, 0]
+          cameraPosition: [0, 0, 4],
+          cameraTarget: [0, 1.5, 0]
         },
         {
           id: 'av-node',
           title: 'Atrioventricular Node',
           description: "The AV node is the gateway between the atria and the ventricles.",
           highlightedStructures: ['av-node'],
-          cameraPosition: [0, 2, 4],
-          cameraTarget: [0, 0, 0]
+          cameraPosition: [0, 1, 4],
+          cameraTarget: [0, 1.5, 0]
         },
         {
           id: 'bundle-of-his',
           title: 'Bundle of His',
           description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
           highlightedStructures: ['bundle-of-his'],
-          cameraPosition: [0, 2, 4],
-          cameraTarget: [0, 0, 0]
+          cameraPosition: [0, -0.5, 4],
+          cameraTarget: [0, 1.5, 0]
         }
       ]
     }
@@ -62,7 +81,8 @@ const useLearningStore = create<LearningState>()((set, get) => ({
       currentStepIndex: 0,
       isPlaying: false,
       // Set initial highlighted structures
-      highlightedStructures: module?.steps[0]?.highlightedStructures || []
+      highlightedStructures: module?.steps[0]?.highlightedStructures || [],
+      cameraReset: moduleId === null
     });
   },
   nextStep: () => {
