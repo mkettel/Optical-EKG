@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "next-view-transitions";
 import { LearningWrapper } from "@/components/learning/learning-wrapper";
 import { useLearningStore } from "@/store/learning-store";
+import { AttributionButton } from "@/components/attribution";
 
 export default function Page() {
   const { 
@@ -53,7 +54,9 @@ export default function Page() {
                         <CardTitle>Exploration Mode</CardTitle>
                       </CardHeader>
                       <CardContent className="flex-1 min-h-0 overflow-auto">
-                        {/* Add exploration controls */}
+                        <div className="flex mt-4">
+                          <p className="text-xl">Coming Soon... 🔨</p>
+                        </div>
                       </CardContent>
                   </TabsContent>
 
@@ -62,7 +65,9 @@ export default function Page() {
                         <CardTitle>Practice Mode</CardTitle>
                       </CardHeader>
                       <CardContent className="flex-1 min-h-0 overflow-auto">
-                        {/* Add practice mode content */}
+                        <div className="flex mt-4">
+                          <p className="text-xl">Coming Soon... 🔨</p>
+                        </div>
                       </CardContent>
                   </TabsContent>
                 </div>
@@ -74,12 +79,13 @@ export default function Page() {
           <div className="lg:col-span-2 h-full">
             <Card className="h-full flex bg-white flex-col">
               <CardHeader className="flex-none">
-                <CardTitle className="text-white">Heart Visualization</CardTitle>
+                <CardTitle className="text-black">Heart Visualization</CardTitle>
               </CardHeader>
-              <CardContent className="flex-1 min-h-0">
+              <CardContent className="flex-1 relative min-h-0">
                 <div className="w-full h-full">
                   <Scene />
                 </div>
+                <AttributionButton />
               </CardContent>
             </Card>
           </div>

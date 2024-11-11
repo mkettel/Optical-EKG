@@ -7,6 +7,7 @@ import { Center, OrbitControls, PerspectiveCamera, Grid } from "@react-three/dre
 import { useLearningStore, DEFAULT_CAMERA_POSITION, DEFAULT_CAMERA_TARGET, CAMERA_CONFIG } from "@/store/learning-store";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { AttributionButton } from "@/components/attribution";
 
 function easeInOutCubic(x: number): number {
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
@@ -146,42 +147,45 @@ function CameraController() {
 
 export default function Scene() {
   return (
-    <Canvas 
-      className="w-full h-full bg-white rounded-md"
-      shadows
-      // Set initial camera position
-      camera={{ 
-        position: DEFAULT_CAMERA_POSITION, 
-        fov: CAMERA_CONFIG.limits.fov,
-        near: CAMERA_CONFIG.limits.near,
-        far: CAMERA_CONFIG.limits.far
-      }}
-    >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <CameraController />
-      <Center>
-        <group position={[0, -0.5, 0]}>
-          <HeartModel />
+    <>
+      <Canvas 
+        className="w-full h-full bg-white rounded-md"
+        shadows
+        // Set initial camera position
+        camera={{ 
+          position: DEFAULT_CAMERA_POSITION, 
+          fov: CAMERA_CONFIG.limits.fov,
+          near: CAMERA_CONFIG.limits.near,
+          far: CAMERA_CONFIG.limits.far
+        }}
+      >
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <CameraController />
+        <Center>
+          <group position={[0, -0.5, 0]}>
+            <HeartModel />
+          </group>
+        </Center>
+        {/* Ground plane setup */}
+        <group position={[0, -0.2, 0]}>
+          {/* Infinite grid for reference */}
+          <Grid
+            position={[0, 0.01, 0]}
+            args={[25, 25]}
+            cellSize={0.4}
+            cellThickness={0.4}
+            cellColor="#fc4e4e"
+            sectionSize={2}
+            sectionThickness={1}
+            sectionColor="#202020"
+            fadeDistance={15}
+            fadeStrength={1}
+            followCamera={false}
+          />        
         </group>
-      </Center>
-      {/* Ground plane setup */}
-      <group position={[0, -0.2, 0]}>
-        {/* Infinite grid for reference */}
-        <Grid
-          position={[0, 0.01, 0]}
-          args={[25, 25]}
-          cellSize={0.4}
-          cellThickness={0.4}
-          cellColor="#fc4e4e"
-          sectionSize={2}
-          sectionThickness={1}
-          sectionColor="#202020"
-          fadeDistance={15}
-          fadeStrength={1}
-          followCamera={false}
-        />        
-      </group>
-    </Canvas>
+      </Canvas>
+      
+    </>
   );
 }
