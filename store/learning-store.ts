@@ -17,7 +17,7 @@ interface LearningState {
   reset: () => void;
   cameraReset?: boolean;
 }
-
+// 
 // store/learning-store.ts
 export const CAMERA_CONFIG = {
   default: {
@@ -52,15 +52,15 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Sinoatrial Node',
           description: "The heartbeat begins in the SA node, the heart's natural pacemaker.",
           highlightedStructures: ['sa-node'],
-          cameraPosition: [-0.2, 1.5, 2.0],
-          cameraTarget: [-0.2, 1.5, 0]
+          cameraPosition: [-0.1, 1.5, 1.2],
+          cameraTarget: [-0.4, 1.6, 0]
         },
         {
           id: 'av-node',
           title: 'Atrioventricular Node',
           description: "The AV node is the gateway between the atria and the ventricles.",
           highlightedStructures: ['av-node'],
-          cameraPosition: [0, 1.5, 2.2],
+          cameraPosition: [-0.2, 1.5, 2.0],
           cameraTarget: [0, 1.5, 0]
         },
         {
@@ -68,7 +68,7 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Bundle of His',
           description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
           highlightedStructures: ['bundle-of-his'],
-          cameraPosition: [0, 1, 3],
+          cameraPosition: [0, 1.5, 2.1],
           cameraTarget: [0, 1.5, 0]
         }
       ]
