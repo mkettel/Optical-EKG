@@ -77,11 +77,11 @@ export default function Page() {
 
           {/* 3D Visualization Section */}
           <div className="lg:col-span-2 h-full">
-            <Card className="h-full flex bg-white flex-col">
-              <CardHeader className="flex-none">
+            <Card className="h-full flex relative bg-white flex-col">
+              <CardHeader className="flex-none absolute top-0 left-0 z-10 bg-transparent">
                 <CardTitle className="text-black">Heart Visualization</CardTitle>
               </CardHeader>
-              <CardContent className="flex-1 relative min-h-0">
+              <CardContent className="flex-1 pt-2 p-2 relative min-h-0">
                 <div className="w-full h-full">
                   <Scene />
                 </div>
