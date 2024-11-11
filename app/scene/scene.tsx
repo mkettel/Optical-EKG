@@ -3,7 +3,7 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { HeartModel } from "@/components/heart/heart-model";
-import { Center, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Center, OrbitControls, PerspectiveCamera, Grid } from "@react-three/drei";
 import { useLearningStore, DEFAULT_CAMERA_POSITION, DEFAULT_CAMERA_TARGET, CAMERA_CONFIG } from "@/store/learning-store";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
@@ -165,6 +165,23 @@ export default function Scene() {
           <HeartModel />
         </group>
       </Center>
+      {/* Ground plane setup */}
+      <group position={[0, -0.2, 0]}>
+        {/* Infinite grid for reference */}
+        <Grid
+          position={[0, 0.01, 0]}
+          args={[25, 25]}
+          cellSize={0.4}
+          cellThickness={0.4}
+          cellColor="#fc4e4e"
+          sectionSize={2}
+          sectionThickness={1}
+          sectionColor="#202020"
+          fadeDistance={15}
+          fadeStrength={1}
+          followCamera={false}
+        />        
+      </group>
     </Canvas>
   );
 }

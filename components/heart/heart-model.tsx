@@ -92,6 +92,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                 <group name="skeletal3_3">
                   <group name="GLTF_created_0">
                     <skinnedMesh
+                      castShadow
                       ref={meshRefs['heart-muscle']}
                       name="heart-muscle"
                       geometry={nodes['heart-muscle'].geometry}
@@ -102,6 +103,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       <group name="heart2_2" />
                     </group>
                     <skinnedMesh
+                      castShadow
                       ref={meshRefs['right-atrium']}
                       name="Object_30"
                       geometry={nodes.Object_30.geometry}
@@ -109,6 +111,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       skeleton={nodes.Object_30.skeleton}
                     />
                     <skinnedMesh
+                      castShadow
                       ref={meshRefs['Object_30']}
                       name="right-atrium"
                       geometry={nodes['right-atrium'].geometry}
