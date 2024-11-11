@@ -25,7 +25,7 @@ export const CAMERA_CONFIG = {
     target: [0, 1.5, 0] as [number, number, number],
   },
   limits: {
-    minDistance: 1.5,
+    minDistance: 1.0,
     maxDistance: 4.5,
     fov: 65,
     near: 0.1,
