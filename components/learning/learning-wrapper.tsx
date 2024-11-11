@@ -8,7 +8,7 @@ import { useLearningStore } from '@/store/learning-store';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
-export function LearningWrapper() {
+export function LearningWrapper({ currentModule }: any) {
   const { currentModuleId, setCurrentModule } = useLearningStore();
 
   if (!currentModuleId) {
@@ -16,10 +16,10 @@ export function LearningWrapper() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="">
       <Button 
         variant="ghost" 
-        className="flex items-center gap-2 mb-4" 
+        className={`flex items-center px-2 gap-2 ${currentModule ? 'mt-4 mb-1' : 'mb-4'}`} 
         onClick={() => setCurrentModule(null)}
       >
         <ArrowLeft className="h-4 w-4" />

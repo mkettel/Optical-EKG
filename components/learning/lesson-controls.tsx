@@ -27,6 +27,7 @@ export function LessonControls() {
 
   return (
     <div className="space-y-4">
+      <h2 className='text-xl font-bold bg-red-300 rounded-md p-2'>{currentModule.title}</h2>
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">{currentStep.title}</h3>
         <p className="text-sm text-muted-foreground">{currentStep.description}</p>

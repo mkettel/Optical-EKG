@@ -8,6 +8,7 @@ export interface LearningStep {
   highlightedStructures?: string[];
   cameraPosition?: [number, number, number];
   cameraTarget?: [number, number, number];
+  
 }
 
 export interface LessonModule {

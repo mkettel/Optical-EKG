@@ -21,11 +21,11 @@ interface LearningState {
 // store/learning-store.ts
 export const CAMERA_CONFIG = {
   default: {
-    position: [0, 0, 5] as [number, number, number],
+    position: [0, 1.5, 4] as [number, number, number],
     target: [0, 1.5, 0] as [number, number, number],
   },
   limits: {
-    minDistance: 3,
+    minDistance: 1.5,
     maxDistance: 4.5,
     fov: 65,
     near: 0.1,
@@ -43,8 +43,8 @@ const useLearningStore = create<LearningState>()((set, get) => ({
   highlightedStructures: [],
   modules: [
     {
-      id: 'electrical-conduction',
-      title: 'Electrical Conduction',
+      id: 'electrical-conduction-components',
+      title: 'Electrical Conduction Components',
       description: 'Learn about the cardiac conduction system',
       steps: [
         {
@@ -52,15 +52,15 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Sinoatrial Node',
           description: "The heartbeat begins in the SA node, the heart's natural pacemaker.",
           highlightedStructures: ['sa-node'],
-          cameraPosition: [0, 0, 4],
-          cameraTarget: [0, 1.5, 0]
+          cameraPosition: [-0.2, 1.5, 2.0],
+          cameraTarget: [-0.2, 1.5, 0]
         },
         {
           id: 'av-node',
           title: 'Atrioventricular Node',
           description: "The AV node is the gateway between the atria and the ventricles.",
           highlightedStructures: ['av-node'],
-          cameraPosition: [0, 1, 4],
+          cameraPosition: [0, 1.5, 2.2],
           cameraTarget: [0, 1.5, 0]
         },
         {
@@ -68,11 +68,50 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Bundle of His',
           description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
           highlightedStructures: ['bundle-of-his'],
-          cameraPosition: [0, -0.5, 4],
+          cameraPosition: [0, 1, 3],
           cameraTarget: [0, 1.5, 0]
         }
       ]
-    }
+    },
+    {
+      id: 'normal-sinus-rhythm',
+      title: 'Normal Sinus Rhythm',
+      description: 'Normal electrical activity of the heart',
+      steps: [
+        {
+          id: 'sa-node',
+          title: 'Sinoatrial Node',
+          description: "The heartbeat begins in the SA node, the heart's natural pacemaker.",
+          highlightedStructures: ['sa-node'],
+          cameraPosition: [-0.2, 1.5, 2.0],
+          cameraTarget: [-0.2, 1.5, 0]
+        },
+        {
+          id: 'av-node',
+          title: 'Atrioventricular Node',
+          description: "The AV node is the gateway between the atria and the ventricles.",
+          highlightedStructures: ['av-node'],
+          cameraPosition: [0, 1.5, 2.2],
+          cameraTarget: [0, 1.5, 0]
+        },
+        {
+          id: 'bundle-of-his',
+          title: 'Bundle of His',
+          description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
+          highlightedStructures: ['bundle-of-his'],
+          cameraPosition: [0, 1, 3],
+          cameraTarget: [0, 1.5, 0]
+        },
+        {
+          id: 'purkinje-fibers',
+          title: 'Purkinje Fibers',
+          description: "Purkinje fibers are specialized muscle fibers that conduct the cardiac impulse.",
+          highlightedStructures: ['purkinje-fibers'],
+          cameraPosition: [0, 1, 3],
+          cameraTarget: [0, 1.5, 0]
+        }
+      ]
+    },
   ],
   setCurrentModule: (moduleId) => {
     const module = get().modules.find(m => m.id === moduleId);

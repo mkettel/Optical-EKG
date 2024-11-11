@@ -20,13 +20,27 @@ function lerpVectors(
   return current.clone().lerp(target, alpha);
 }
 
-const INITIAL_CAMERA_POSITION = new THREE.Vector3(0, 0, 5);
-const INITIAL_TARGET_POSITION = new THREE.Vector3(0, 1.5, 0);
-
 function CameraController() {
   const controlsRef = useRef<any>(null);
   const { camera } = useThree();
   const { currentModuleId, currentStepIndex, modules } = useLearningStore();
+
+  
+  // Refs to store current camera positions
+  const currentPosition = useRef(new THREE.Vector3(...DEFAULT_CAMERA_POSITION));
+  const currentTarget = useRef(new THREE.Vector3(...DEFAULT_CAMERA_TARGET));
+  
+  // Refs to store target positions
+  const targetPosition = useRef(new THREE.Vector3(...DEFAULT_CAMERA_POSITION));
+  const targetLookAt = useRef(new THREE.Vector3(...DEFAULT_CAMERA_TARGET));
+  
+  // Animation state
+  const [isAnimating, setIsAnimating] = useState(false);
+  const animationProgress = useRef(0);
+  
+  // Get current step data
+  const currentModule = modules.find(m => m.id === currentModuleId);
+  const currentStep = currentModule?.steps[currentStepIndex];
 
   // Effect to handle returning to default position
   useEffect(() => {
@@ -46,22 +60,6 @@ function CameraController() {
       setIsAnimating(true);
     }
   }, [currentModuleId, camera]);
-  
-  // Refs to store current camera positions
-  const currentPosition = useRef(new THREE.Vector3(...DEFAULT_CAMERA_POSITION));
-  const currentTarget = useRef(new THREE.Vector3(...DEFAULT_CAMERA_TARGET));
-  
-  // Refs to store target positions
-  const targetPosition = useRef(new THREE.Vector3(...DEFAULT_CAMERA_POSITION));
-  const targetLookAt = useRef(new THREE.Vector3(...DEFAULT_CAMERA_TARGET));
-  
-  // Animation state
-  const [isAnimating, setIsAnimating] = useState(false);
-  const animationProgress = useRef(0);
-
-  // Get current step data
-  const currentModule = modules.find(m => m.id === currentModuleId);
-  const currentStep = currentModule?.steps[currentStepIndex];
 
   // Initialize controls position
   useEffect(() => {
@@ -135,8 +133,8 @@ function CameraController() {
       ref={controlsRef}
       enableDamping
       dampingFactor={0.04}
-      minDistance={3}
-      maxDistance={4.5}
+      minDistance={CAMERA_CONFIG.limits.minDistance}
+      maxDistance={CAMERA_CONFIG.limits.maxDistance}
       enabled={!isAnimating}
       // Set initial target position
       target={DEFAULT_CAMERA_TARGET}

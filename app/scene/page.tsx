@@ -1,12 +1,21 @@
+'use client';
+
 // app/page.tsx
 import Scene from "./scene";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "next-view-transitions";
-import { ModuleSelector } from "@/components/learning/module-selector";
 import { LearningWrapper } from "@/components/learning/learning-wrapper";
+import { useLearningStore } from "@/store/learning-store";
 
 export default function Page() {
+  const { 
+    currentModuleId,
+    modules 
+  } = useLearningStore();
+
+  const currentModule = modules.find(m => m.id === currentModuleId);
+
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-background dark:bg-black">
       {/* Header - fixed height */}
@@ -31,11 +40,11 @@ export default function Page() {
 
                 <div className="flex-1 min-h-0">
                   <TabsContent value="learn" className="h-full mt-0">
-                      <CardHeader className="flex-none px-4">
+                      <CardHeader className={`${currentModule ? 'hidden' : 'block flex-none px-4'}`} >
                         <CardTitle>Learning Modules</CardTitle>
                       </CardHeader>
                       <CardContent className="flex-1 px-4 min-h-0 overflow-auto">
-                        <LearningWrapper />
+                        <LearningWrapper currentModule={currentModule} />
                       </CardContent>
                   </TabsContent>
 
