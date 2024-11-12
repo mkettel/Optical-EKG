@@ -60,7 +60,7 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Atrioventricular Node',
           description: "The AV node is the gateway between the atria and the ventricles.",
           highlightedStructures: ['av-node'],
-          cameraPosition: [-0.2, 1.5, 2.0],
+          cameraPosition: [-1.2, 1.7, 1.3],
           cameraTarget: [0, 1.5, 0]
         },
         {

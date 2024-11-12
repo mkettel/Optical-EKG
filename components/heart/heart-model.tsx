@@ -81,6 +81,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
     });
   }, [highlightedStructures]);
   
+  // testing blender stuff
 
   return (
     <group ref={group} {...props} dispose={null}>
