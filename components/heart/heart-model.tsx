@@ -199,6 +199,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       scale={7.126}
                     />
                     <mesh
+                      ref={meshRefs['llb-post-fascicle']}
                       name="llb-post-fascicle"
                       castShadow
                       receiveShadow

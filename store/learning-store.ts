@@ -84,8 +84,8 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Left Bundle Branch',
           description: "The left bundle branch conducts the impulse to the left ventricle.",
           highlightedStructures: ['left-bundle-branch'],
-          cameraPosition: [0, 1.5, 2.1],
-          cameraTarget: [0, 1.5, 0]
+          cameraPosition: [0.8, 1.0, 1.2],
+          cameraTarget: [0.3, 0.8, 0]
         }
       ]
     },
