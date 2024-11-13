@@ -162,11 +162,10 @@ export default function Scene() {
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <CameraController />
-        <Center>
-          <group position={[0, 0.5, 0]}>
+          <group position={[0, 0, 0]}>
             <HeartModel />
           </group>
-        </Center>
+
         {/* Ground plane setup */}
         <group position={[0, -0.2, 0]}>
           {/* Infinite grid for reference */}
