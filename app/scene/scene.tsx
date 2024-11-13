@@ -163,7 +163,7 @@ export default function Scene() {
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <CameraController />
         <Center>
-          <group position={[0, -0.5, 0]}>
+          <group position={[0, 0.5, 0]}>
             <HeartModel />
           </group>
         </Center>
