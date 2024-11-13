@@ -21,7 +21,7 @@ interface LearningState {
 // store/learning-store.ts
 export const CAMERA_CONFIG = {
   default: {
-    position: [0, 1.5, 4] as [number, number, number],
+    position: [0, 1.5, 3.5] as [number, number, number],
     target: [0, 1.5, 0] as [number, number, number],
   },
   limits: {
@@ -52,31 +52,31 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Sinoatrial Node',
           description: "The heartbeat begins in the SA node, the heart's natural pacemaker.",
           highlightedStructures: ['sa-node'],
-          cameraPosition: [-0.1, 1.6, 0.8],
-          cameraTarget: [-0.6, 1.7, 0]
+          cameraPosition: [-0.3, 1.7, 0.7],
+          cameraTarget: [-0.6, 1.8, 0]
         },
         {
           id: 'av-node',
           title: 'Atrioventricular Node',
           description: "The AV node is the gateway between the atria and the ventricles.",
           highlightedStructures: ['av-node'],
-          cameraPosition: [-1.0, 1.7, 1.0],
-          cameraTarget: [0, 1.5, 0]
+          cameraPosition: [-1.1, 1.7, 0.8],
+          cameraTarget: [-0.1, 1.5, 0]
         },
         {
           id: 'bundle-of-his',
           title: 'Bundle of His',
           description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
           highlightedStructures: ['bundle-of-his'],
-          cameraPosition: [0.2, 1.5, 1.2],
-          cameraTarget: [0.2, 1.2, 0]
+          cameraPosition: [-0.2, 1.5, 0.9],
+          cameraTarget: [0.2, 1.3, 0]
         },
         {
           id: 'right-bundle-branch',
           title: 'Right Bundle Branch',
           description: "The right bundle branch conducts the impulse to the right ventricle.",
           highlightedStructures: ['right-bundle-branch'],
-          cameraPosition: [0.3, 1.0, 1.5],
+          cameraPosition: [0.3, 1.0, 1.32],
           cameraTarget: [0.2, 0.8, 0]
         },
         {
