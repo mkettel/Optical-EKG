@@ -173,9 +173,9 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       receiveShadow
                       geometry={nodes['bundle-of-his'].geometry}
                       material={materials.nodes}
-                      position={[-51.048, 156.4, 10.284]}
+                      position={[-51.048, 156.0, 10.984]}
                       rotation={[-Math.PI, 1.536, -Math.PI]}
-                      scale={9.014}
+                      scale={8.8}
                     />
                     <skinnedMesh
 
@@ -194,7 +194,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       receiveShadow
                       geometry={nodes['left-bundle-branch'].geometry}
                       material={materials.nodes}
-                      position={[6.399, 128.12, 43.208]}
+                      position={[6.099, 128.12, 43.208]}
                       rotation={[0.909, -0.602, -0.19]}
                       scale={7.126}
                     />
@@ -260,9 +260,9 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       receiveShadow
                       geometry={nodes['right-bundle-branch'].geometry}
                       material={materials.nodes}
-                      position={[3.912, 125.996, 44.597]}
-                      rotation={[-1.249, 1.116, -0.078]}
-                      scale={7.126}
+                      position={[2.512, 125.996, 44.597]}
+                      rotation={[-1.249, 1.156, -0.078]}
+                      scale={7.326}
                     />
                     <mesh
                       ref={meshRefs['sa-node']}
