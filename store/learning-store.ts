@@ -56,9 +56,25 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           cameraTarget: [-0.6, 1.8, 0]
         },
         {
+          id: 'bachman-pathway',
+          title: 'Bachman Bundle',
+          description: "The Bachman bundle is a specialized pathway that conducts the impulse to the left atrium from the right atrium from the SA node.",
+          highlightedStructures: ['bachman-pathway'],
+          cameraPosition: [-0.7, 1.7, 0.7],
+          cameraTarget: [-0.6, 1.8, 0]
+        },
+        {
+          id: 'internodal-pathways',
+          title: 'Internodal Pathways',
+          description: "The internodal pathways conduct the impulse from the SA node to the AV node at the same time as the Bachman pathways.",
+          highlightedStructures: ['anterior-internodal', 'middle-internodal', 'posterior-internodal'],
+          cameraPosition: [-0.55, 1.7, 1.1],
+          cameraTarget: [-0.5, 1.8, 0]
+        },
+        {
           id: 'av-node',
           title: 'Atrioventricular Node',
-          description: "The AV node is the gateway between the atria and the ventricles.",
+          description: "The AV node is the gateway between the atria and the ventricles. It delays the impulse to allow the atria to contract before the ventricles.",
           highlightedStructures: ['av-node'],
           cameraPosition: [-1.1, 1.7, 0.8],
           cameraTarget: [-0.1, 1.5, 0]
@@ -66,7 +82,7 @@ const useLearningStore = create<LearningState>()((set, get) => ({
         {
           id: 'bundle-of-his',
           title: 'Bundle of His',
-          description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction.",
+          description: "The Bundle of His is a collection of heart muscle cells specialized for electrical conduction. This is where the impulse is conducted from the AV node to the ventricles.",
           highlightedStructures: ['bundle-of-his'],
           cameraPosition: [-0.2, 1.5, 0.9],
           cameraTarget: [0.2, 1.3, 0]
@@ -84,6 +100,14 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Left Bundle Branch',
           description: "The left bundle branch conducts the impulse to the left ventricle.",
           highlightedStructures: ['left-bundle-branch'],
+          cameraPosition: [0.8, 1.0, 1.2],
+          cameraTarget: [0.3, 0.8, 0]
+        },
+        {
+          id: 'llb-posterior-fascicles',
+          title: 'Left Posterior Fascicle',
+          description: "The left posterior fascicle is a specialized pathway that conducts the impulse to the left ventricle. It is part of the left bundle branch.",
+          highlightedStructures: ['llb-post-fascicle', 'llb-post-fascicle-sup'],
           cameraPosition: [0.8, 1.0, 1.2],
           cameraTarget: [0.3, 0.8, 0]
         }
@@ -165,7 +189,18 @@ const useLearningStore = create<LearningState>()((set, get) => ({
     }
   },
   setPlaying: (playing) => set({ isPlaying: playing }),
-  reset: () => set({ currentStepIndex: 0, isPlaying: false })
+  reset: () => {
+    const { currentModuleId, modules } = get();
+    const currentModule = modules.find(m => m.id === currentModuleId);
+    const firstStep = currentModule?.steps[0];
+    
+    set({ 
+      currentStepIndex: 0, 
+      isPlaying: false,
+      // Also reset highlighted structures to the first step's structures
+      highlightedStructures: firstStep?.highlightedStructures || []
+    });
+  }
 }));
 
 export { useLearningStore };
