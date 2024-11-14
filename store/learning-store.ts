@@ -17,8 +17,8 @@ interface LearningState {
   reset: () => void;
   cameraReset?: boolean;
 }
-// 
-// store/learning-store.ts
+
+
 export const CAMERA_CONFIG = {
   default: {
     position: [0, 1.5, 3.5] as [number, number, number],
