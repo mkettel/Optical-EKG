@@ -20,6 +20,17 @@ type GLTFResult = GLTF & {
     ['right-atrium']: THREE.SkinnedMesh
     ['right-bundle-branch']: THREE.Mesh
     ['sa-node']: THREE.Mesh
+    ['purkinje-fiber-l']: THREE.Mesh
+    ['purkinje-fiber-r']: THREE.Mesh
+    ['tail-l-1']: THREE.Mesh
+    ['tail-l-2']: THREE.Mesh
+    ['tail-l-3']: THREE.Mesh
+    ['tail-l-4']: THREE.Mesh
+    ['tail-r']: THREE.Mesh
+    ['tail-r-1']: THREE.Mesh
+    ['tail-r-2']: THREE.Mesh
+    ['tail-r-3']: THREE.Mesh
+    ['tail-r-3b']: THREE.Mesh
     GLTF_created_0_rootJoint: THREE.Bone
   }
   materials: {
@@ -47,12 +58,35 @@ const STRUCTURE_MESH_MAP: { [key: string]: string } = {
   'llb-post-fascicle': 'llb-post-fascicle',
   'llb-post-fascicle-sup': 'llb-post-fascicle-sup',
   'heart-muscle': 'heart-muscle',
-  'right-atrium': 'right-atrium'
+  'right-atrium': 'right-atrium',
+  'purkinje-fiber-l': 'purkinje-fiber-l',
+  'purkinje-fiber-r': 'purkinje-fiber-r',
+  'tail-l-1': 'tail-l-1',
+  'tail-l-2': 'tail-l-2',
+  'tail-l-3': 'tail-l-3',
+  'tail-l-4': 'tail-l-4',
+  'tail-r': 'tail-r',
+  'tail-r-1': 'tail-r-1',
+  'tail-r-2': 'tail-r-2',
+  'tail-r-3': 'tail-r-3',
+  'tail-r-3b': 'tail-r-3b',
 };
 
 export function HeartModel(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null);
-  const { nodes, materials } = useGLTF('3d-models/heart-cross-grouped.glb') as GLTFResult;
+  const { nodes, materials } = useGLTF('3d-models/heart-cross-full-mesh.glb') as GLTFResult;
+
+  // Create refs for all meshes we want to manipulate
+  const meshRefs: MeshRefs = Object.keys(STRUCTURE_MESH_MAP).reduce((acc, key) => {
+    acc[STRUCTURE_MESH_MAP[key]] = useRef<THREE.Mesh | THREE.SkinnedMesh>(null);
+    return acc;
+  }, {} as MeshRefs);
+
+  console.log('meshRefs', meshRefs);
+
+  // Get highlighted structures from store
+  const highlightedStructures = useLearningStore(state => state.highlightedStructures);
+  console.log('highlightedStructures', highlightedStructures);
 
   useEffect(() => {
     // Clone materials for each mesh to prevent shared states
@@ -67,15 +101,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
     });
   }, []);
   
-  // Get highlighted structures from store
-  const highlightedStructures = useLearningStore(state => state.highlightedStructures);
-  console.log('highlightedStructures', highlightedStructures);
 
-  // Create refs for all meshes we want to manipulate
-  const meshRefs: MeshRefs = Object.keys(STRUCTURE_MESH_MAP).reduce((acc, key) => {
-    acc[STRUCTURE_MESH_MAP[key]] = useRef<THREE.Mesh | THREE.SkinnedMesh>(null);
-    return acc;
-  }, {} as MeshRefs);
 
   // Effect to handle highlighting
   useEffect(() => {
@@ -178,7 +204,6 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       scale={8.8}
                     />
                     <skinnedMesh
-
                       name="heart-muscle"
                       geometry={nodes['heart-muscle'].geometry}
                       material={materials['material_0.001']}
@@ -276,6 +301,131 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
                       rotation={[2.223, -0.309, -1.191]}
                       scale={[23.786, 21.812, 25.176]}
                     />
+                    <group position={[-1.1, -0.8, 0]}>
+                      <mesh
+                        ref={meshRefs['purkinje-fiber-l']}
+                        name="purkinje-fiber-l"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['purkinje-fiber-l'].geometry}
+                        material={materials.nodes}
+                        position={[82.634, 64.091, 44.727]}
+                        rotation={[1.551, -0.14, -0.003]}
+                        scale={-13.01}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-l-1']}
+                        name="tail-l-1"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-l-1'].geometry}
+                        material={materials.nodes}
+                        position={[97.989, 107.49, 44.987]}
+                        rotation={[-1.633, 0.522, 0.031]}
+                        scale={3.869}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-l-2']}
+                        name="tail-l-2"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-l-2'].geometry}
+                        material={materials.nodes}
+                        position={[104.836, 117.705, 44.981]}
+                        rotation={[1.565, 0.718, 0.004]}
+                        scale={-4.125}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-l-3']}
+                        name="tail-l-3"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-l-3'].geometry}
+                        material={materials.nodes}
+                        position={[105.342, 103.451, 44.824]}
+                        rotation={[1.565, 0.718, 0.004]}
+                        scale={-4.125}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-l-4']}
+                        name="tail-l-4"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-l-4'].geometry}
+                        material={materials.nodes}
+                        position={[103.214, 70.454, 45.228]}
+                        rotation={[-1.731, 0.376, 0.048]}
+                        scale={-4.125}
+                      />
+                    </group>
+                    <group position={[-8.6, -0.5, -0.3]} rotation={[0.0, 0.0, -0.1]}>
+                      <mesh
+                        ref={meshRefs['purkinje-fiber-r']}
+                        name="purkinje-fiber-r"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['purkinje-fiber-r'].geometry}
+                        material={materials.nodes}
+                        position={[26.623, 39.065, 45.429]}
+                        rotation={[-1.734, -1.181, 2.989]}
+                        scale={14.222}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-r']}
+                        name="tail-r"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-r'].geometry}
+                        material={materials.nodes}
+                        position={[-29.331, 46.655, 46.115]}
+                        rotation={[1.425, -0.939, -0.118]}
+                        scale={8.297}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-r-1']}
+                        name="tail-r-1"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-r-1'].geometry}
+                        material={materials.nodes}
+                        position={[-3.555, 37.879, 46.115]}
+                        rotation={[1.425, -0.939, -0.118]}
+                        scale={8.297}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-r-2']}
+                        name="tail-r-2"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-r-2'].geometry}
+                        material={materials.nodes}
+                        position={[-18.596, 33.67, 46.115]}
+                        rotation={[1.485, 0.074, 0.006]}
+                        scale={8.297}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-r-3']}
+                        name="tail-r-3"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-r-3'].geometry}
+                        material={materials.nodes}
+                        position={[14.036, 25.23, 46.115]}
+                        rotation={[1.47, 0.544, 0.052]}
+                        scale={8.297}
+                      />
+                      <mesh
+                        ref={meshRefs['tail-r-3b']}
+                        name="tail-r-3b"
+                        castShadow
+                        receiveShadow
+                        geometry={nodes['tail-r-3b'].geometry}
+                        material={materials.nodes}
+                        position={[13.067, 25.23, 46.115]}
+                        rotation={[-1.726, -0.084, -0.007]}
+                        scale={2.353}
+                      />
+                    </group>
                     <primitive object={nodes.GLTF_created_0_rootJoint} />
                   </group>
                 </group>
@@ -288,4 +438,4 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('3d-models/heart-cross-grouped.glb')
+useGLTF.preload('3d-models/heart-cross-full-mesh.glb')

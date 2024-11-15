@@ -108,7 +108,15 @@ const useLearningStore = create<LearningState>()((set, get) => ({
           title: 'Left Posterior Fascicle',
           description: "The left posterior fascicle is one of two main divisions of the left bundle branch, supplying the posterior and inferior walls of the left ventricle. This fascicle is typically thicker and less vulnerable to injury than the anterior fascicle. Left posterior fascicular block is relatively rare compared to anterior fascicular block, but when present, it can cause subtle ECG changes including right axis deviation and small q waves in leads II, III, and aVF.",
           highlightedStructures: ['llb-post-fascicle', 'llb-post-fascicle-sup'],
-          cameraPosition: [0.8, 1.0, 1.2],
+          cameraPosition: [1.0, 1.0, 1.2],
+          cameraTarget: [0.3, 0.8, 0]
+        },
+        {
+          id: 'purkinje-fibers',
+          title: 'Purkinje Fibers',
+          description: "Purkinje fibers are specialized muscle fibers that rapidly conduct electrical impulses to the ventricular myocardium. These fibers are larger and more extensive in the left ventricle, reflecting the greater demands of systemic circulation. Purkinje fibers ensure rapid and synchronized ventricular depolarization, leading to efficient contraction. Dysfunction of Purkinje fibers can result in ventricular arrhythmias and impaired cardiac function.",
+          highlightedStructures: ['purkinje-fiber-l', 'purkinje-fiber-r', 'tail-l-1', 'tail-l-2', 'tail-l-3', 'tail-l-4', 'tail-r', 'tail-r-1', 'tail-r-2', 'tail-r-3', 'tail-r-3b'],
+          cameraPosition: [0.5, 0.5, 1.5],
           cameraTarget: [0.3, 0.8, 0]
         }
       ]
