@@ -8,11 +8,10 @@ import { useLearningStore } from '@/store/learning-store';
 export function ModuleSelector() {
   const { modules, setCurrentModule, currentModuleId } = useLearningStore();
 
-  
+
 
   return (
     <div className="space-y-2">
-      {/* <h2 className="text-lg font-semibold">Learning Modules</h2> */}
       <div className="space-y-2">
         {modules.map((module) => (
           <Button

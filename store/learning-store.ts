@@ -3,6 +3,8 @@
 // store/learning-store.ts
 import { create } from 'zustand';
 import { LessonModule } from '@/lib/types/learning';
+import { EKGPattern, EKGSegment, normalSinusRhythm } from '@/lib/constants/ekg-patterns';
+
 
 interface LearningState {
   currentModuleId: string | null;
@@ -16,8 +18,11 @@ interface LearningState {
   setPlaying: (playing: boolean) => void;
   reset: () => void;
   cameraReset?: boolean;
+  ekgPatterns: {
+    [key: string]: EKGPattern;
+  };
+  currentEKGPattern: string;
 }
-
 
 export const CAMERA_CONFIG = {
   default: {
@@ -36,11 +41,17 @@ export const CAMERA_CONFIG = {
 export const DEFAULT_CAMERA_POSITION = CAMERA_CONFIG.default.position;
 export const DEFAULT_CAMERA_TARGET = CAMERA_CONFIG.default.target;
 
+
+
 const useLearningStore = create<LearningState>()((set, get) => ({
   currentModuleId: null,
   currentStepIndex: 0,
   isPlaying: false,
   highlightedStructures: [],
+  ekgPatterns: {
+    'normal-sinus-rhythm': normalSinusRhythm,
+  },
+  currentEKGPattern: 'normal-sinus-rhythm',
   modules: [
     {
       id: 'electrical-conduction-components',
@@ -171,6 +182,9 @@ const useLearningStore = create<LearningState>()((set, get) => ({
       highlightedStructures: module?.steps[0]?.highlightedStructures || [],
       cameraReset: moduleId === null
     });
+  },
+  setEkgPattern: (patternId: string) => {
+    set({ currentEKGPattern: patternId });
   },
   nextStep: () => {
     const { currentStepIndex, modules, currentModuleId } = get();

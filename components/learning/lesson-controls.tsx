@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useLearningStore } from '@/store/learning-store';
 import { Play, Pause, SkipBack, SkipForward, RotateCcw } from 'lucide-react';
+import EKGVisualization from '../ekg/EkgVisualization';
 
 export function LessonControls() {
   const { 
@@ -74,6 +75,8 @@ export function LessonControls() {
           </Button>
         </div>
       </div>
+
+      <EKGVisualization />
 
       {/* Progress bar */}
       <div className="w-full bg-secondary rounded-full h-2">
