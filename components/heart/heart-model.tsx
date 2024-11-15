@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import React, { useEffect, useRef } from 'react'
-import { useGLTF, PerspectiveCamera } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { useLearningStore } from '@/store/learning-store'
 
@@ -88,6 +88,7 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
   const highlightedStructures = useLearningStore(state => state.highlightedStructures);
   console.log('highlightedStructures', highlightedStructures);
 
+  // Clone materials on mount to prevent shared states
   useEffect(() => {
     // Clone materials for each mesh to prevent shared states
     Object.values(meshRefs).forEach(meshRef => {
@@ -102,7 +103,6 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
   }, []);
   
 
-
   // Effect to handle highlighting
   useEffect(() => {
     // Reset all materials to default state
@@ -114,11 +114,11 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
           // Reset base color
           material.color.set('#ffffff');
           // Reset emissive
-          material.emissive.set('#000000');
-          material.emissiveIntensity = 0;
+          material.emissive.set('#ffffff');
+          material.emissiveIntensity = 0.4;
           // Reset material properties
-          material.metalness = 0.5;
-          material.roughness = 0.8;
+          material.metalness = 0.4;
+          material.roughness = 0.3;
           material.opacity = 1;
           material.transparent = true;
         }
@@ -136,13 +136,13 @@ export function HeartModel(props: JSX.IntrinsicElements['group']) {
         if (material instanceof THREE.MeshStandardMaterial || 
             material instanceof THREE.MeshPhysicalMaterial) {
           // Set both base color and emissive for better visibility
-          material.color.set('#87eb1c');
-          material.emissive.set('#87eb1c');
-          material.emissiveIntensity = 0.5;
+          material.color.set('#4287f5');
+          material.emissive.set('#4287f5');
+          material.emissiveIntensity = 0.6;
           // Adjust material properties for highlight effect
-          material.metalness = 0.1;
+          material.metalness = 0.7;
           material.roughness = 0.3;
-          material.opacity = 0.8;
+          material.opacity = 1.0;
           material.transparent = true;
         }
       }
