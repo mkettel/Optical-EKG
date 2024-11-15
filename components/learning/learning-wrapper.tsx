@@ -16,7 +16,7 @@ export function LearningWrapper({ currentModule }: any) {
   }
 
   return (
-    <div className="">
+    <div className="flex flex-col">
       <Button 
         variant="ghost" 
         className={`flex items-center px-2 gap-2 ${currentModule ? 'mt-4 mb-1' : 'mb-4'}`} 

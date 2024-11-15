@@ -44,7 +44,7 @@ export default function Page() {
                       <CardHeader className={`${currentModule ? 'hidden' : 'block flex-none px-4'}`} >
                         <CardTitle>Learning Modules</CardTitle>
                       </CardHeader>
-                      <CardContent className="flex-1 px-4 min-h-0 overflow-auto">
+                      <CardContent className="flex-1 px-4 min-h-0 h-full overflow-auto">
                         <LearningWrapper currentModule={currentModule} />
                       </CardContent>
                   </TabsContent>

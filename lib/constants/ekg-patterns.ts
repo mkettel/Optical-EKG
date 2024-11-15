@@ -41,54 +41,54 @@ export const normalSinusRhythm: EKGPattern = {
     {
       id: 'sa-node',
       percentStart: 0,
-      percentEnd: 20, // P-wave start
+      percentEnd: 18, // P-wave start
       color: '#4287f5'
     },
     {
       id: 'bachman-pathway',
-      percentStart: 20,
-      percentEnd: 30, // P-wave completion
+      percentStart: 18,
+      percentEnd: 20, // P-wave completion
       color: '#4287f5'
     },
     {
       id: 'internodal-pathways',
-      percentStart: 30,
-      percentEnd: 35, // Early PR interval
+      percentStart: 20,
+      percentEnd: 22, // Early PR interval
       color: '#4287f5'
     },
     {
       id: 'av-node',
-      percentStart: 35,
-      percentEnd: 45, // PR interval
+      percentStart: 22,
+      percentEnd: 30, // PR interval
       color: '#4287f5'
     },
     {
       id: 'bundle-of-his',
-      percentStart: 45,
-      percentEnd: 55, // Start of QRS
+      percentStart: 30,
+      percentEnd: 40, // Start of QRS
       color: '#4287f5'
     },
     {
       id: 'right-bundle-branch',
-      percentStart: 55,
-      percentEnd: 65, // QRS complex
+      percentStart: 40,
+      percentEnd: 50, // QRS complex
       color: '#4287f5'
     },
     {
       id: 'left-bundle-branch',
-      percentStart: 65,
-      percentEnd: 75, // QRS completion
+      percentStart: 40,
+      percentEnd: 50, // QRS completion
       color: '#4287f5'
     },
     {
       id: 'llb-posterior-fascicles',
-      percentStart: 75,
-      percentEnd: 85, // ST segment
+      percentStart: 50,
+      percentEnd: 55, // ST segment
       color: '#4287f5'
     },
     {
       id: 'purkinje-fibers',
-      percentStart: 85,
+      percentStart: 55,
       percentEnd: 100, // T wave
       color: '#4287f5'
     }
